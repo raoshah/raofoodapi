@@ -1,19 +1,14 @@
 {
-
     "builds": [
-
         {
-
             "src": "raofoodapi/wsgi.py",
-
             "use": "@vercel/python"
-
         }
-
     ],
-
     "routes": [
-    { "src": "/(.*)", "dest": "raofoodapi/asgi.py" }
-  ]
-
+        {
+            "src": "/(.*)",
+            "dest": "raofoodapi/wsgi.py"
+        }
+    ]
 }
