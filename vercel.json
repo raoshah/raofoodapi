@@ -13,23 +13,7 @@
     ],
 
     "routes": [
-
-        {
-
-            "src": "/static/(.*)",
-
-            "dest": "/static/$1"
-
-        },
-
-        {
-
-            "src": "/(.*)",
-
-            "dest": "raofoodapi/wsgi.py"
-
-        }
-
-    ]
+    { "src": "/(.*)", "dest": "raofoodapi/asgi.py" }
+  ]
 
 }
