@@ -1,4 +1,9 @@
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+import dj_database_url
+
+load_dotenv()
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,6 +24,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'userapi',
+    'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -53,10 +62,9 @@ WSGI_APPLICATION = 'raofoodapi.wsgi.application'
 
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+       'default': dj_database_url.config(
+        default=os.environ.get('DATABASE')
+    )
 }
 
 
@@ -90,3 +98,13 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' 
+EMAIL_HOST = 'smtp.gmail.com'  
+EMAIL_PORT = 587 
+EMAIL_USE_TLS = True  
+EMAIL_HOST_USER = 'truedost5@gmail.com' 
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = 'truedost5@gmail.com' 
