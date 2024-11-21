@@ -83,13 +83,6 @@ def register(request):
 
 @api_view(['POST'])
 def login(request):
-    send_mail(
-    'Your OTP Code',
-    f'Your OTP code is: 101010',
-    'truedost5@gmail.com',  # The sender's email
-    ['truedost4@gmail.com'],  # The recipient's email in a list
-    fail_silently=False,
-)
     username = request.data.get('username')
     password = request.data.get('password')
 
