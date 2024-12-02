@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'userapi',
+    'raofood',
     'rest_framework',
     'rest_framework.authtoken',
 ]
