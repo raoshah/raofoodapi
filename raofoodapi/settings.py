@@ -14,7 +14,11 @@ SECRET_KEY = 'django-insecure-ljn@!uwi(!p3+^bzj$%7a$973aid8@z*wbr6=*w65mhqn48gdc
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['raofoodapi.vercel.app', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['raofoodapi.vercel.app', 'localhost', '127.0.0.1', 'localhost:3000']
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+]
 
 
 INSTALLED_APPS = [
@@ -27,8 +31,10 @@ INSTALLED_APPS = [
 
     'userapi',
     'raofood',
+    'aiapi',
     'rest_framework',
     'rest_framework.authtoken',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -39,6 +45,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'raofoodapi.urls'
@@ -109,3 +116,5 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'truedost5@gmail.com' 
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = 'truedost5@gmail.com' 
+
+
