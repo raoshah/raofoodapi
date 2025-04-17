@@ -18,6 +18,8 @@ ALLOWED_HOSTS = ['raofoodapi.vercel.app', 'localhost', '127.0.0.1', 'localhost:3
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
+    'https://raofood.vercel.app',
+    'https://sideai.vercel.app',
 ]
 
 
