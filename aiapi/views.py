@@ -29,15 +29,16 @@ def save_questions(request):
         if not isinstance(incoming_data, list):
             return Response({'error': 'Data must be a list of question objects'}, status=status.HTTP_400_BAD_REQUEST)
 
-        # Group incoming questions by 'subject' (which maps to 'topic' in model)
         topic_map = {}
         for item in incoming_data:
-            topic = item.get('subject')  # still expecting 'subject' in input
-            if not topic:
+            raw_topic = item.get('subject')
+            if not raw_topic:
                 continue
+
+            topic = raw_topic.strip().lower()
+            item['subject'] = topic
             topic_map.setdefault(topic, []).append(item)
 
-        # Process each topic
         for topic, questions in topic_map.items():
             obj = Questions.objects.filter(topic=topic).first()
 
