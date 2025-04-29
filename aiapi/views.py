@@ -71,9 +71,11 @@ def get_topics(request):
 
 
 @api_view(['GET'])
-def get_questions(request, topic):
+def get_questions(request):
+    topic = request.GET.get('topic')
     try:
         question = Questions.objects.get(topic=topic)
         return Response({"questions": question.questions, "status": "success"}, status=status.HTTP_200_OK)
     except Questions.DoesNotExist:
         return Response({"error": "Topic not found"}, status=status.HTTP_404_NOT_FOUND)
+
